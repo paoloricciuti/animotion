@@ -1,21 +1,23 @@
 <script lang="ts">
-	import { Presentation, Slide } from '@components'
+	import { Presentation, Slide, Recorder } from '@components'
 	import { signal } from '@motion'
 
-	const circle = signal(
+	let circle = signal(
 		{ x: 0, y: 200, r: 80, fill: '#00ffff' },
 		{ duration: 2000 }
 	)
 
 	async function animate() {
-		await circle.to({ x: 400, fill: '#ffff00' }, { delay: 600 })
-		await circle.to({ x: 0, fill: '#00ffff' }, { delay: 300 })
+		await circle.to({ x: 400, fill: '#ffff00' })
+		await circle.to({ x: 0, fill: '#00ffff' })
 	}
 
 	function resetAnimation() {
 		circle.reset()
 	}
 </script>
+
+<Recorder />
 
 <Presentation>
 	<Slide animate>
@@ -31,7 +33,7 @@
 				x={$circle.x}
 				y={$circle.y}
 				font-size={$circle.r * 0.4}
-				font-family="JetBrains Mono"
+				font-family="JetBrains Mono Variable"
 				text-anchor="middle"
 				dominant-baseline="middle"
 			>
